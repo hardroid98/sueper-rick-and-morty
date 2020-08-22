@@ -6,17 +6,12 @@ import io.reactivex.Single
 
 class LocalLoginRepository : LoginRepository {
     override fun login(usuario: String, contrasena: String): Single<Usuario> {
-        if (usuario == "Admin" && contrasena == "1234")
-            (return Single.just(
-                Usuario("1", "Litto", "fotourl")
-
-            )
-                    )
-        else (
-                return Single.just(
-                    Usuario("", "", "")
-                )
-                )
-
+        return if (usuario == "Admin" && contrasena == "1234") {
+            Single.just(
+                Usuario("1", "Litto", "fotourl"))
+        } else {
+            Single.just(
+                Usuario("", "", ""))
+        }
     }
 }
