@@ -58,11 +58,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun handleResult(result: Usuario) {
-        if(result.id.isNotEmpty()){
-            Toast.makeText(requireContext(), "Bienvenido!!! :D", Toast.LENGTH_LONG).show()
-        } else {
-            Toast.makeText(requireContext(), "Algo salio mal :(", Toast.LENGTH_LONG).show()
-        }
+
     }
 
     private fun handleError(error: Throwable) {
