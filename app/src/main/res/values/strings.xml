@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SuperRickAndMorty</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_usuario">Usuario</string>
+    <string name="tv_contrasena">Contraseña</string>
+    <string name="et_ingrese_usuario">Ingrese usuario</string>
+    <string name="et_ingrese_contrasena">Ingrese contraseña</string>
+    <string name="btn_ingresar">Ingresar</string>
 </resources>
