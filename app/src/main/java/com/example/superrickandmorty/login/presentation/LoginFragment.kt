@@ -38,8 +38,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun setupListener() {
         binding.apply {
             btnIngresar.setOnClickListener {
-                val usuario = tvUsuario.text.toString()
-                val contrasena = tvContrasena.text.toString()
+                val usuario = etUsuario.text.toString()
+                val contrasena = etContrasena.text.toString()
                 callUseCase(usuario, contrasena)
             }
         }
