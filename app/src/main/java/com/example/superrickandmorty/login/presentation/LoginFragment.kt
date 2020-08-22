@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.superrickandmorty.R
 import com.example.superrickandmorty.databinding.FragmentLoginBinding
 import com.example.superrickandmorty.login.data.local.LocalLoginRepository
@@ -56,7 +57,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun mostrarLoginCorrecto(result: Usuario?) {
-        Toast.makeText(requireContext(),"Bienvenido ${result?.name}", Toast.LENGTH_LONG).show()
+        Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_menuFragment)
 
     }
 
