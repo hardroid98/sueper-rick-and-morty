@@ -5,13 +5,11 @@ import com.example.superrickandmorty.login.domain.Usuario
 import io.reactivex.Single
 
 class LocalLoginRepository : LoginRepository {
-    override fun login(usuario: String, contrasena: String): Single<Usuario> {
+    override suspend fun login(usuario: String, contrasena: String): Usuario {
         return if (usuario == "Admin" && contrasena == "1234") {
-            Single.just(
-                Usuario("1", "Litto", "fotourl"))
+                Usuario("1", "Litto", "fotourl")
         } else {
-            Single.just(
-                Usuario("", "", ""))
+                Usuario("", "", "")
         }
     }
 }

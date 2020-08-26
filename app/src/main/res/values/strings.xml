@@ -7,4 +7,5 @@
     <string name="et_ingrese_usuario">Ingrese usuario</string>
     <string name="et_ingrese_contrasena">Ingrese contraseña</string>
     <string name="btn_ingresar">Ingresar</string>
+    <string name="registrar_usuario">Registrar Usuario</string>
 </resources>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/registraUsuarioFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -13,9 +13,16 @@
         <action
             android:id="@+id/action_loginFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registraUsuarioFragment"
+            app:destination="@id/registraUsuarioFragment" />
     </fragment>
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.superrickandmorty.menu.presentation.MenuFragment"
         android:label="MenuFragment" />
+    <fragment
+        android:id="@+id/registraUsuarioFragment"
+        android:name="com.example.superrickandmorty.registro.presentation.RegistraUsuarioFragment"
+        android:label="RegistraUsuarioFragment" />
 </navigation>

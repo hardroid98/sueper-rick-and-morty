@@ -1,27 +1,24 @@
 package com.example.superrickandmorty.login.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.superrickandmorty.R
 import com.example.superrickandmorty.databinding.FragmentLoginBinding
-import com.example.superrickandmorty.login.data.local.LocalLoginRepository
-import com.example.superrickandmorty.login.domain.LoginRepository
+import com.example.superrickandmorty.login.data.remote.FirebaseLoginRepository
 import com.example.superrickandmorty.login.domain.LoginUseCase
 import com.example.superrickandmorty.login.domain.Usuario
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var loginUseCase: LoginUseCase
-    private lateinit var repository: LoginRepository
+    private lateinit var repository: FirebaseLoginRepository
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var loginViewModelFactory: LoginViewModelFactory
 
@@ -36,14 +33,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun setupLiveData() {
         loginViewModel.getLiveData().observe(
             viewLifecycleOwner,
-            Observer {state ->
+            Observer { state ->
                 handleState(state)
             }
         )
     }
 
     private fun handleState(state: LoginState?) {
-        when(state){
+        when (state) {
             is LoginState.LoadingState -> mostrarCargando()
             is LoginState.ContrasenaIncorrecta -> mostrarErrorContrasena()
             is LoginState.Complete -> mostrarLoginCorrecto(state.result)
@@ -52,29 +49,31 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun mostrarError() {
-        Toast.makeText(requireContext(),"Ups, algo ha pasado", Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), "Ups, algo ha pasado", Toast.LENGTH_LONG).show()
 
     }
 
     private fun mostrarLoginCorrecto(result: Usuario?) {
-        Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_menuFragment)
+        Navigation.findNavController(requireView())
+            .navigate(R.id.action_loginFragment_to_menuFragment)
 
     }
 
     private fun mostrarErrorContrasena() {
-        Toast.makeText(requireContext(),"Contraseña incorrecta", Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show()
 
     }
 
     private fun mostrarCargando() {
-        Toast.makeText(requireContext(),"Cargando", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Cargando", Toast.LENGTH_SHORT).show()
     }
 
     private fun setupDependencies() {
-        repository = LocalLoginRepository()
+        repository = FirebaseLoginRepository(FirebaseAuth.getInstance())
         loginUseCase = LoginUseCase(repository)
         loginViewModelFactory = LoginViewModelFactory(loginUseCase)
-        loginViewModel = ViewModelProvider(this, loginViewModelFactory).get(LoginViewModel::class.java)
+        loginViewModel =
+            ViewModelProvider(this, loginViewModelFactory).get(LoginViewModel::class.java)
 
     }
 

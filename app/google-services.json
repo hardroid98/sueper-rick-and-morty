@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "60123281171",
+    "firebase_url": "https://super-rick-and-morty.firebaseio.com",
+    "project_id": "super-rick-and-morty",
+    "storage_bucket": "super-rick-and-morty.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60123281171:android:36b775a39135fa1f914ce6",
+        "android_client_info": {
+          "package_name": "com.example.superrickandmorty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60123281171-v1g4tgj7l440ooq1bpfb4ucdu957647s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdGjFX6PHzWaLb7_IbM2kTXC8Hak138fs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60123281171-v1g4tgj7l440ooq1bpfb4ucdu957647s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
