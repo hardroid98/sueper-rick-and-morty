@@ -1,13 +1,12 @@
 package com.example.superrickandmorty.personajes.presentation
 
-import com.example.superrickandmorty.personajes.data.remote.PersonajeModel
-import com.example.superrickandmorty.personajes.data.remote.PersonajesModel
+import com.example.superrickandmorty.personajes.domain.Personajes
 
 sealed class PersonajesState(
-    open val result: PersonajesModel? = null
+    open val result: Personajes? = null
 ){
     object LoadingPersonajesState: PersonajesState()
-    data class LoadPersonajesState(override val result: PersonajesModel): PersonajesState(result = result)
+    data class LoadPersonajesState(override val result: Personajes): PersonajesState(result = result)
     object EmptyListPersonajesState: PersonajesState()
     object ErrorServerPersonajesState: PersonajesState()
     object NotInternetPersonajesState: PersonajesState()
